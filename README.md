@@ -51,4 +51,19 @@ SELECT town_name, station_name FROM Stations JOIN Towns ON Stations.town = Towns
 | Kyiv            | Dambova      |
 | Kyiv            | Sadova       |
 
+3. Select all stations that belong Ivano_Frankivsk
+ ```sql
+SELECT town_name, station_name FROM Stations JOIN Towns ON Stations.town = Towns.town_id WHERE town_name like 'Ivano%';
+```
+
+| town_name       | station_name |
+|-----------------|--------------|
+| Ivano_Frankivsk | Chornovola   |
+| Ivano_Frankivsk | Dovchenka    |
+| Ivano_Frankivsk | Mazepy       |
+| Ivano_Frankivsk | Sacharova    |
+| Ivano_Frankivsk | Pochta       |
+| Ivano_Frankivsk | Bandery      |
+
+
 
