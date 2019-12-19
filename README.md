@@ -1,2 +1,3 @@
 # route_scheldue
-Data base that  contains routes 
+## Entity Relatioship(ER) diagram
+![ER-diagram](./img/bddiagram.png)
