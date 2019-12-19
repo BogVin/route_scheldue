@@ -66,4 +66,4 @@ SELECT town_name, station_name FROM Stations JOIN Towns ON Stations.town = Towns
 | Ivano_Frankivsk | Bandery      |
 
 
-
+4. 
