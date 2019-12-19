@@ -10,6 +10,7 @@
 1. Select all stations
 ```sql
 SELECT * FROM Stations;
+```
 +------+------------+--------------+
 | town | station_id | station_name |
 +------+------------+--------------+
@@ -28,3 +29,26 @@ SELECT * FROM Stations;
 |    3 |         33 | Dambova      |
 |    3 |         34 | Sadova       |
 +------+------------+--------------+
+2. Select stations with town
+ ```sql
+SELECT town_name, station_name FROM Stations JOIN Towns ON Stations.town = Towns.town_id;
+```
++-----------------+--------------+
+| town_name       | station_name |
++-----------------+--------------+
+| Lviv            | Tetralna     |
+| Lviv            | Petlury      |
+| Lviv            | Vokzal       |
+| Lviv            | Kolumba      |
+| Ivano_Frankivsk | Chornovola   |
+| Ivano_Frankivsk | Dovchenka    |
+| Ivano_Frankivsk | Mazepy       |
+| Ivano_Frankivsk | Sacharova    |
+| Ivano_Frankivsk | Pochta       |
+| Ivano_Frankivsk | Bandery      |
+| Kyiv            | Platona      |
+| Kyiv            | Dnipro       |
+| Kyiv            | Dambova      |
+| Kyiv            | Sadova       |
++-----------------+--------------+
+
