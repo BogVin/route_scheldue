@@ -158,3 +158,13 @@ from
 |    38 |            2 | Pochta        |         25 | 2019-12-19 12:30:00 |             2 | Bandery        |          26 | 2019-12-19 12:40:00 |        5 |
 |    38 |            2 | Bandery       |         26 | 2019-12-19 12:45:00 |             2 | Chornovola     |          21 | 2019-12-19 13:00:00 |        7 |
 
+7. Getting needed route
+ ```sql
+SELECT first_station , start_time , second_station, end_time FROM rt WHERE route = 38 ORDER BY start_time;
+```
+| first_station | start_time          | second_station | end_time            |
+|---------------|---------------------|----------------|---------------------|
+| Chornovola    | 2019-12-19 12:00:00 | Dovchenka      | 2019-12-19 12:10:00 |
+| Dovchenka     | 2019-12-19 12:15:00 | Pochta         | 2019-12-19 12:25:00 |
+| Pochta        | 2019-12-19 12:30:00 | Bandery        | 2019-12-19 12:40:00 |
+| Bandery       | 2019-12-19 12:45:00 | Chornovola     | 2019-12-19 13:00:00 |
