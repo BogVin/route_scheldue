@@ -131,32 +131,38 @@ CREATE OR REPLACE VIEW rt as
 select
     route,
     s1.town as s_first_town,
+	t1.town_name as first_town,
     s1.station_name as first_station,
 	s1.station_id as s_first_id,
 	start_time,
     s2.town as s_second_town,
+	t2.town_name as second_town,
     s2.station_name as second_station,
     s2.station_id as s_second_id,
     end_time, distance
+	
 from
     Bus_route b
     inner join Stations s1 on
         b.from_station = s1.station_id
     inner join Stations s2 on
-        b.to_station = s2.station_id;
-        SELECT * FROM rt;
+        b.to_station = s2.station_id
+    inner join  Towns t1 on
+	t1.town_id = s1.town
+    inner join Towns t2 on
+	t2.town_id = s2.town;
 ```
-| route | s_first_town | first_station | s_first_id | start_time          | s_second_town | second_station | s_second_id | end_time            | distance |
-|-------|--------------|---------------|------------|---------------------|---------------|----------------|-------------|---------------------|----------|
-|    68 |            1 | Tetralna      |         11 | 2019-12-19 12:00:00 |             1 | Petlury        |          12 | 2019-12-19 12:30:00 |       12 |
-|    68 |            1 | Petlury       |         12 | 2019-12-19 12:40:00 |             1 | Kolumba        |          14 | 2019-12-19 13:00:00 |       10 |
-|    68 |            1 | Kolumba       |         14 | 2019-12-19 13:10:00 |             1 | Vokzal         |          13 | 2019-12-19 13:30:00 |        9 |
-|    68 |            1 | Vokzal        |         13 | 2019-12-19 13:40:00 |             1 | Tetralna       |          11 | 2019-12-19 14:00:00 |       10 |
-|   234 |            1 | Vokzal        |         13 | 2019-12-20 12:00:00 |             2 | Bandery        |          26 | 2019-12-20 13:00:00 |      132 |
-|    38 |            2 | Chornovola    |         21 | 2019-12-19 12:00:00 |             2 | Dovchenka      |          22 | 2019-12-19 12:10:00 |        3 |
-|    38 |            2 | Dovchenka     |         22 | 2019-12-19 12:15:00 |             2 | Pochta         |          25 | 2019-12-19 12:25:00 |        4 |
-|    38 |            2 | Pochta        |         25 | 2019-12-19 12:30:00 |             2 | Bandery        |          26 | 2019-12-19 12:40:00 |        5 |
-|    38 |            2 | Bandery       |         26 | 2019-12-19 12:45:00 |             2 | Chornovola     |          21 | 2019-12-19 13:00:00 |        7 |
+| route | s_first_town | first_town      | first_station | s_first_id | start_time          | s_second_town | second_town     | second_station | s_second_id | end_time            | distance |
+|-------|--------------|-----------------|---------------|------------|---------------------|---------------|-----------------|----------------|-------------|---------------------|----------|
+|    68 |            1 | Lviv            | Tetralna      |         11 | 2019-12-19 12:00:00 |             1 | Lviv            | Petlury        |          12 | 2019-12-19 12:30:00 |       12 |
+|    68 |            1 | Lviv            | Petlury       |         12 | 2019-12-19 12:40:00 |             1 | Lviv            | Kolumba        |          14 | 2019-12-19 13:00:00 |       10 |
+|    68 |            1 | Lviv            | Kolumba       |         14 | 2019-12-19 13:10:00 |             1 | Lviv            | Vokzal         |          13 | 2019-12-19 13:30:00 |        9 |
+|    68 |            1 | Lviv            | Vokzal        |         13 | 2019-12-19 13:40:00 |             1 | Lviv            | Tetralna       |          11 | 2019-12-19 14:00:00 |       10 |
+|   234 |            1 | Lviv            | Vokzal        |         13 | 2019-12-20 12:00:00 |             2 | Ivano_Frankivsk | Bandery        |          26 | 2019-12-20 13:00:00 |      132 |
+|    38 |            2 | Ivano_Frankivsk | Chornovola    |         21 | 2019-12-19 12:00:00 |             2 | Ivano_Frankivsk | Dovchenka      |          22 | 2019-12-19 12:10:00 |        3 |
+|    38 |            2 | Ivano_Frankivsk | Dovchenka     |         22 | 2019-12-19 12:15:00 |             2 | Ivano_Frankivsk | Pochta         |          25 | 2019-12-19 12:25:00 |        4 |
+|    38 |            2 | Ivano_Frankivsk | Pochta        |         25 | 2019-12-19 12:30:00 |             2 | Ivano_Frankivsk | Bandery        |          26 | 2019-12-19 12:40:00 |        5 |
+|    38 |            2 | Ivano_Frankivsk | Bandery       |         26 | 2019-12-19 12:45:00 |             2 | Ivano_Frankivsk | Chornovola     |          21 | 2019-12-19 13:00:00 |        7 |
 
 7. Getting needed route
  ```sql
