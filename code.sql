@@ -84,19 +84,26 @@ CREATE OR REPLACE VIEW rt as
 select
     route,
     s1.town as s_first_town,
+	t1.town_name as first_town,
     s1.station_name as first_station,
 	s1.station_id as s_first_id,
 	start_time,
     s2.town as s_second_town,
+	t2.town_name as second_town,
     s2.station_name as second_station,
     s2.station_id as s_second_id,
     end_time, distance
+	
 from
     Bus_route b
     inner join Stations s1 on
         b.from_station = s1.station_id
     inner join Stations s2 on
-        b.to_station = s2.station_id;
+        b.to_station = s2.station_id
+    inner join  Towns t1 on
+	t1.town_id = s1.town
+    inner join Towns t2 on
+	t2.town_id = s2.town;
 
 
 
